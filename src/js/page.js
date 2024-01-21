@@ -4,7 +4,7 @@ import "izitoast/dist/css/iziToast.min.css";
 import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
-const API_KEY = '41917530-74216f8e6af2c90f64ec8c0b5';
+const API_KEY = '41942855-48a43e8a3131b9e330700a0c4';
 const URL = "https://pixabay.com/api/";
 const formEl = document.querySelector(".form-inline");
 const containerEl = document.querySelector(".card-container");
