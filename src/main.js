@@ -9,6 +9,11 @@ const URL = "https://pixabay.com/api/";
 const formEl = document.querySelector(".form-inline");
 const containerEl = document.querySelector(".card-container");
 formEl.addEventListener("submit", handleSearch);
+const lightbox = new SimpleLightbox('.card-container a', {
+                    captionsData: 'alt',
+                    captionPosition: 'bottom',
+                    captionDelay: 250,
+                });
 function showLoadingIndicator() {
     containerEl.innerHTML = '<p>Loading images, please wait...</p>';
 }
@@ -24,8 +29,7 @@ function handleSearch(event) {
     const picture = form.elements.picture.value.trim();
     if (picture === "" || picture == null) {
         iziToast.error({
-            title: "Error",
-            message: `❌Sorry, there are no images matching your search query. Please, try again!`,
+            message: `❌Please, input your request!`,
         })
         containerEl.innerHTML = "";
         return;
@@ -41,14 +45,9 @@ function handleSearch(event) {
                     markup += createPictureMarkup(hit);
                 }
                 containerEl.innerHTML = markup;
-                const lightbox = new SimpleLightbox('.card-container a', {
-                    captionsData: 'alt',
-                    captionPosition: 'bottom',
-                    captionDelay: 250,
-                });
+                lightbox.refresh();
             } else {
                 iziToast.error({
-                    title: "Error",
                     message: `❌Sorry, there are no images matching your search query. Please, try again!`,
                 })
 
@@ -63,7 +62,7 @@ function serchPicture(picture) {
     const urlParams = new URLSearchParams({
         key: API_KEY,
         q: picture,
-        type: "photo",
+        image_type: "photo",
         orientation: "horizontal",
         safesearch: true
     });
