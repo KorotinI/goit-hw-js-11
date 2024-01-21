@@ -29,7 +29,7 @@ function handleSearch(event) {
     const picture = form.elements.picture.value.trim();
     if (picture === "" || picture == null) {
         iziToast.error({
-            message: `❌Please, input your request!`,
+            message: `❌ Please, input your request!`,
         })
         containerEl.innerHTML = "";
         return;
@@ -48,7 +48,7 @@ function handleSearch(event) {
                 lightbox.refresh();
             } else {
                 iziToast.error({
-                    message: `❌Sorry, there are no images matching your search query. Please, try again!`,
+                    message: `❌ Sorry, there are no images matching your search query. Please, try again!`,
                 })
 
             }
